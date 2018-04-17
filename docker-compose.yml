@@ -9,7 +9,5 @@ services:
       - ./etc/nginx:/etc/nginx
       - ./logs/nginx:/var/log/nginx
       - ./htmls:/var/www/html
-    links:
-      - wordpress
     restart: always
 
