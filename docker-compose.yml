@@ -3,8 +3,8 @@ services:
   nginx:
     image: nginx:1.13.12
     ports:
-      - '8080:80'
-      - '8081:443'
+      - '80:80'
+      - '443:443'
     volumes:
       - ./etc/nginx:/etc/nginx
       - ./logs/nginx:/var/log/nginx
