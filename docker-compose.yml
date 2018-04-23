@@ -1,13 +1,20 @@
-version: '2'
-services:
-  nginx:
-    image: nginx:1.13.12
-    ports:
-      - '80:80'
-      - '443:443'
-    volumes:
-      - ./etc/nginx:/etc/nginx
-      - ./logs/nginx:/var/log/nginx
-      - ./htmls:/var/www/html
-    restart: always
+nginx:
+  image: nginx:1.13.12
+  ports:
+    - '80:80'
+    - '443:443'
+  volumes:
+    - ./etc/nginx:/etc/nginx
+    - ./logs/nginx:/var/log/nginx
+    - ./htmls:/var/www/html
+  links:
+    - php
+  restart: always
 
+php:
+  image: php:7.2.4-fpm
+  ports:
+    - '9000:9000'
+  volumes:
+    - ./wordpress:/var/www/html
+  restart: always
