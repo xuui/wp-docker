@@ -16,5 +16,5 @@ php:
   ports:
     - '9000:9000'
   volumes:
-    - ./wordpress:/var/www/html
+    - ./htmls:/var/www/html
   restart: always
