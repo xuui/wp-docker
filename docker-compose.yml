@@ -12,7 +12,8 @@ nginx:
   restart: always
 
 php:
-  image: php:7.2.4-fpm
+  image: php:7.2-fpm
+#  image: wordpress:php7.2-fpm
   ports:
     - '9000:9000'
   volumes:
