@@ -1,5 +1,8 @@
 *.log
 .DS_Store
+db.data/*
+htmls/*
+
 htmls/.htaccess
 htmls/readme.html
 htmls/sitemap.xml
