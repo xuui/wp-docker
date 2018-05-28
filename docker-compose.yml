@@ -29,7 +29,7 @@ php:
   ports:
     - '9000:9000'
   volumes:
-    - ./etc/php:/usr/local/etc/
+    - ./etc/php:/usr/local/etc
     - ./htmls:/var/www/html:rw
   environment:
     - WORDPRESS_DB_NAME=wpdb
