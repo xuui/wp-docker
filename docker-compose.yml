@@ -12,8 +12,8 @@ nginx:
   restart: always
 
 mysql:
-#  image: mariadb:10.2
-  image: mariadb:5
+  image: mariadb:10.2
+#  image: mariadb:5
   ports:
     - '3306:3306'
   volumes:
