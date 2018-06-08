@@ -1,4 +1,2 @@
 #!/bin/sh
-docker container stop mynginx
-docker container stop myphp
-
+docker-compose stop
