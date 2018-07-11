@@ -1,41 +1,44 @@
-nginx:
-  image: nginx:1.13.12
-  ports:
-    - '80:80'
-    - '443:443'
-  volumes:
-    - ./etc/nginx:/etc/nginx
-    - ./logs/nginx:/var/log/nginx
-    - ./htmls:/var/www/html:rw
-  links:
-    - php
-  restart: always
+version: "3"
+services:
+  nginx:
+    image: nginx:latest
+#    image: nginx:1.13.12
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./etc/nginx:/etc/nginx
+      - ./logs/nginx:/var/log/nginx
+      - ./htmls:/var/www/html:rw
+    links:
+      - php
+    restart: always
 
-mysql:
-  image: mariadb:10.2
-#  image: mariadb:5
-  ports:
-    - '3306:3306'
-  volumes:
-    - ./etc/mariadb:/etc/mysql
-    - ./db.data:/var/lib/mysql
-  environment:
-    - MYSQL_ROOT_PASSWORD=aqwe123
-  restart: always
+  mysql:
+    image: mariadb:10.2
+  #  image: mariadb:5
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./etc/mariadb:/etc/mysql
+      - ./db.data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=aqwe123
+    restart: always
 
-php:
-#  image: php:7.2-fpm
-  image: wordpress:php7.2-fpm
-  ports:
-    - '9000:9000'
-  volumes:
-    - ./etc/php:/usr/local/etc
-    - ./htmls:/var/www/html:rw
-  environment:
-    - WORDPRESS_DB_NAME=wpdb
-    - WORDPRESS_TABLE_PREFIX=wp_
-    - WORDPRESS_DB_HOST=mysql
-    - WORDPRESS_DB_PASSWORD=aqwe123
-  links:
-    - mysql
-  restart: always
+  php:
+  #  image: php:7.2-fpm
+    image: wordpress:php7.2-fpm
+    ports:
+      - '9000:9000'
+    volumes:
+      - ./etc/php:/usr/local/etc
+      - ./htmls:/var/www/html:rw
+    environment:
+      - WORDPRESS_DB_NAME=wpdb
+      - WORDPRESS_TABLE_PREFIX=wp_
+      - WORDPRESS_DB_HOST=mysql
+      - WORDPRESS_DB_PASSWORD=aqwe123
+    links:
+      - mysql
+    restart: always
