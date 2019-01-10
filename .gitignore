@@ -1,11 +1,15 @@
-*.log
+._*
 .DS_Store
-db.data/*
-htmls/*
-logs/*
+*.log
+*.log.*
+*.zip
+*.tar.gz
+*.rar
+*.7z
 
-htmls/.htaccess
-htmls/readme.html
-htmls/sitemap.xml
-htmls/sitemap.xml.gz
-
+.Trashes/
+.Spotlight-*/
+node_modules/
+bower_components/
+log/
+logs/
