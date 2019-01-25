@@ -1,8 +1,10 @@
-version: "3"
+version: '3.1'
 services:
+
   nginx:
-#    image: nginx:latest
-    image: nginx:1.15.8-alpine
+    image: nginx:nginx:1.15.8
+#    image: nginx:1.15.8-alpine
+    restart: always
     ports:
       - '80:80'
       - '443:443'
@@ -12,33 +14,36 @@ services:
       - ./htmls:/var/www/html:rw
     links:
       - php
-    restart: always
 
   mysql:
-    image: mariadb:10.3
-  #  image: mariadb:5
+    image: mariadb:10.3.12
+    restart: always
     ports:
       - '3306:3306'
     volumes:
       - ./etc/mariadb:/etc/mysql
       - ./db.data:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=aqwe123
-    restart: always
+      MYSQL_DATABASE: xuDiablodb
+      MYSQL_USER: xuDiablo
+      MYSQL_PASSWORD: xuP7t7YndGMdui
+      MYSQL_ROOT_PASSWORD: 2P2hCSrP2mt@xuui
 
   php:
-  #  image: php:7.2-fpm
-    image: wordpress:php7.2-fpm-alpine
-    ports:
-      - '9000:9000'
+#    image: php:7.3-fpm
+    image: wordpress:php7.3-fpm
+#    image: wordpress:php7.3-fpm-alpine
+    restart: always
+#    ports:
+#      - '9000:9000'
     volumes:
       - ./etc/php:/usr/local/etc
       - ./htmls:/var/www/html:rw
     environment:
-      - WORDPRESS_DB_NAME=wpdb
-      - WORDPRESS_TABLE_PREFIX=wp_
-      - WORDPRESS_DB_HOST=mysql
-      - WORDPRESS_DB_PASSWORD=aqwe123
+      WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_NAME: xuDiablodb
+      WORDPRESS_DB_USER: xuDiablo
+      WORDPRESS_DB_PASSWORD: xuP7t7YndGMdui
+      WORDPRESS_TABLE_PREFIX: diablo_
     links:
       - mysql
-    restart: always
