@@ -24,10 +24,10 @@ services:
       - ./etc/mariadb:/etc/mysql
       - ./db.data:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: xuDiablodb
-      MYSQL_USER: xuDiablo
-      MYSQL_PASSWORD: xuP7t7YndGMdui
-      MYSQL_ROOT_PASSWORD: 2P2hCSrP2mt@xuui
+      MYSQL_DATABASE: wordpress_db
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wp123
+      MYSQL_ROOT_PASSWORD: sqlroot123
 
   php:
 #    image: php:7.3-fpm
@@ -41,9 +41,9 @@ services:
       - ./htmls:/var/www/html:rw
     environment:
       WORDPRESS_DB_HOST: mysql
-      WORDPRESS_DB_NAME: xuDiablodb
-      WORDPRESS_DB_USER: xuDiablo
-      WORDPRESS_DB_PASSWORD: xuP7t7YndGMdui
-      WORDPRESS_TABLE_PREFIX: diablo_
+      WORDPRESS_DB_NAME: wordpress_db
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wp123
+      WORDPRESS_TABLE_PREFIX: wp_
     links:
       - mysql
